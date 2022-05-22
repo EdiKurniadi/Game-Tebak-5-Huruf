@@ -5,11 +5,20 @@
 	font-family: 'Helvatica', sans-serif;
 }
 
+/*@keyframes jinggleText {*/
+	/*0% {background-color: rgba(210, 50, 50 , 0.9);}
+	25%  {background-color: rgba(210, 50, 50 , 0.7);}
+	50%  {background-color: rgba(210, 50, 50 , 0.5);}
+	75%  {background-color: rgba(210, 50, 50 , 0.3);}*/
+	/*from {font-size: 1.4rem;}
+	to {font-size: 1rem;}
+}*/
+
 body {
 	display: flex;
 	height: 100vh;
 	flex-direction: column;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	justify-content: space-evenly;
 	align-items: center;
 }
@@ -40,7 +49,7 @@ body {
 .word {
 	display: flex;
 }
-
+ 
 .box-letter {
 	width: 50px;
 	height: 50px;
@@ -52,21 +61,43 @@ body {
 	align-items: center;
 }
 
-.box-letter:nth-child(odd) {
-	border: 2px dashed rgba(100,100,100,0.5);
+/*.word .box-letter {
+	border: 2px solid rgba(100,100,100,0.5);
+}
+*/
+.word:first-of-type .box-letter:nth-child(odd) {
+	border: 2px solid rgb(150,150,150);
 }
 
-.box-letter:nth-child(even) {
-	border-top: 2px dashed rgba(100,100,100,0.5);
-	border-bottom: 2px dashed rgba(100,100,100,0.5);
+.word:first-of-type .box-letter:nth-child(even) {
+	border-top: 2px solid rgb(150,150,150);
+	border-bottom: 2px solid rgb(150,150,150);
 }
+
+.word:not(:first-of-type) .box-letter:nth-child(odd) {
+	border-right: 2px solid rgb(150,150,150);
+	border-left: 2px solid rgb(150,150,150);
+	border-bottom: 2px solid rgb(150,150,150);
+	/*border: 2px solid rgb(150,150,150);*/
+}
+
+.word:not(:first-of-type) .box-letter:nth-child(even) {
+	/*border-top: 2px solid rgb(150,150,150);*/
+	border-bottom: 2px solid rgb(150,150,150);
+}
+
+/*.word:last-of-type .box-letter {
+	color: rgba(150, 150, 150, 1.0);
+}*/
 
 .green {
-	color: green !important;
+	color: white;
+	background-color: limegreen !important;
 }
 
 .orange {
-	color: orange;
+	color: white;
+	background-color: orange;
 }
 
 form {
@@ -79,14 +110,16 @@ form {
 
 #guest {
 	padding: 0.5rem;
-	height: 2rem;
+	/*height: 2rem;*/
+	padding: 0.4rem;
 	font-size: 1.25rem;
 }
 
 #enter-button {
-	height: 2rem;
+	/*height: 2rem;*/
 	width: 10rem;
 	background-color: blueviolet;
 	font-size: 1.25rem;
 	color: white;
+	padding: 0.4rem;
 }

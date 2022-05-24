@@ -26,6 +26,7 @@ body {
 
 #container-words {
 	display: flex;
+	gap: 0.15rem;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -48,6 +49,7 @@ body {
 
 .word {
 	display: flex;
+	gap: 0.15rem;
 }
  
 .box-letter {
@@ -61,11 +63,11 @@ body {
 	align-items: center;
 }
 
-/*.word .box-letter {
+.word .box-letter {
 	border: 2px solid rgba(100,100,100,0.5);
 }
-*/
-.word:first-of-type .box-letter:nth-child(odd) {
+
+/*.word:first-of-type .box-letter:nth-child(odd) {
 	border: 2px solid rgb(150,150,150);
 }
 
@@ -78,15 +80,15 @@ body {
 	border-right: 2px solid rgb(150,150,150);
 	border-left: 2px solid rgb(150,150,150);
 	border-bottom: 2px solid rgb(150,150,150);
-	/*border: 2px solid rgb(150,150,150);*/
+	border: 2px solid rgb(150,150,150);
 }
 
 .word:not(:first-of-type) .box-letter:nth-child(even) {
-	/*border-top: 2px solid rgb(150,150,150);*/
+	border-top: 2px solid rgb(150,150,150);
 	border-bottom: 2px solid rgb(150,150,150);
 }
 
-/*.word:last-of-type .box-letter {
+.word:last-of-type .box-letter {
 	color: rgba(150, 150, 150, 1.0);
 }*/
 
@@ -113,6 +115,13 @@ form {
 	/*height: 2rem;*/
 	padding: 0.4rem;
 	font-size: 1.25rem;
+	outline: none;
+	border: 1px solid rgba(100,100,100, 0.5);
+	/*border: none;*/
+}
+
+#guest:focus {
+	box-shadow: 0px 0px 3px 1px blueviolet;
 }
 
 #enter-button {
@@ -122,4 +131,5 @@ form {
 	font-size: 1.25rem;
 	color: white;
 	padding: 0.4rem;
+	outline: 1px solid rgba(100,100,100, 0.5);
 }

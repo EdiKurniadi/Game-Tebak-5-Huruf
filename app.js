@@ -26,7 +26,8 @@ let gameFinish = false;
 let secretWordArray = secretWord.split('');
 let tryWords = [];
 
-fetch(`http://localhost:5000/entri/${secretWord}`)
+//https://tebak-kata-5-huruf.herokuapp.com/entri/masak
+fetch(`https://tebak-kata-5-huruf.herokuapp.com/entri/${secretWord}`)
   .then(response => response.json())
   .then(data => meaningSecretWordHtml = data.data );
 

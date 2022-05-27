@@ -61,14 +61,20 @@ function startTimer(){
 		} else {
 			clearInterval(timer);
 			gameFinish = true;
-			enterButton.innerHTML = 'Mulai Lagi';
+			enterButton.innerHTML = 'Mulai Lagi    <i class="fa fa-refresh"></i>';
 			guestWord.setAttribute('style',"display:none;");
 			answer.innerHTML = `kata yang dimaksud adalah <b>${secretWord.toUpperCase()}</b>`;
 			answer.setAttribute('style','display:block;');
 			meaningWord.innerHTML = meaningSecretWordHtml;
 			// window.alert('Sayang sekali waktu sudah habis');
 			loseSound.play();
-			swal({title:'sayang sekali waktu sudah habis'});
+			Swal.fire({
+				title:"Sayang sekali waktu sudah habis",
+				showConfirmButton : false,
+				timer: 1000,
+				allowEnterKey : true,
+			});
+			// swal({title:'sayang sekali waktu sudah habis'});
 			return;
 		}
 	}, 1000);
@@ -95,19 +101,42 @@ enterButton.addEventListener('click', function(ev) {
 
 	if(guestWord.value.toLowerCase().length !== 5 ) {
 		// window.alert('tebakan harus terdiri dari 5 angka');
-		swal({title:"tebakan harus terdiri dari 5 huruf"});
+		Swal.fire({
+			title:"tebakan harus terdiri dari 5 huruf",
+			// text : 'tebakan harus terdiri dari 5 huruf',
+			showConfirmButton : false,
+			timer: 1000,
+			allowEnterKey : true,
+		});
 		return;
 	};
 
 	if(wordsHard.indexOf(guestWord.value.toLowerCase()) === -1) {
-		swal({title:'kata yang kamu masukan tidak terdapat dalam KBBI'});
+		// swal({title:'kata yang kamu masukan tidak terdapat dalam KBBI'});
+		// swal({
+		// 	title:"kata yang kamu masukan tidak terdapat dalam KBBI",
+		// 	showConfirmButton : false,
+		// 	timer: 1000
+		// });
+		Swal.fire({
+			title:"kata yang kamu masukan tidak terdapat dalam KBBI",
+			// text : 'tebakan harus terdiri dari 5 huruf',
+			showConfirmButton : false,
+			timer: 1000,
+			allowEnterKey : true,
+		});
 		// window.alert('kata yang kamu masukan tidak terdapat dalam KBBI');
 		return;
 	};
 
 	if(tryWords.indexOf(guestWord.value.toLowerCase()) !== -1) {
 		// window.alert('kata yang kamu masukan sudah pernah dicoba');
-		swal({title:"kata yang kamu masukan sudah pernah dicoba"});
+		Swal.fire({
+			title:"kata yang kamu masukan sudah pernah dicoba",
+			showConfirmButton : false,
+			timer: 1000,
+			allowEnterKey : true,
+		});
 		return;
 	}
 
@@ -142,14 +171,36 @@ enterButton.addEventListener('click', function(ev) {
 		point += 15*(10-numberGuest)*(10-numberGuest);
 		pointElem.innerHTML = `poin: ${beautyPoint(point)}`;
 		// window.alert('selamat kamu BERHASIL');
-		swal({
-		  title: "Selamat Kamu BERHASIL!",
-		  timer: 2000,
-		  icon: "success",
-  		  button: 'OK'
-		});
+		// swal({
+		//   title: "Selamat Kamu BERHASIL!",
+		//   timer: 2000,
+		//   icon: "success",
+  // 		  button: 'OK'
+		// });
+		Swal.fire({
+		  title: 'HOREE!!!',
+		  text: 'Kamu berhasil menebak katanya',
+		  imageUrl: 'nyanCat.gif',
+		  imageWidth: 400,
+		  imageHeight: 150,
+		  imageAlt: 'berhasil',
+		  html : `<p>Kamu berhasil menebak katanya</p><br/><b >POIN: ${beautyPoint(point)}</b>`,
+		  // showConfirmButton: false,
+		  showCloseButton : true,
+		  confirmButtonText : 'statistik',
+		  focusConfirm : false,
+		  // timer : 5000,
+		  allowEnterKey : true,
+		  allowEscapeKey : true,
+		  // footer: `<b >POIN: ${beautyPoint(point)}</b><p onclick='goToStatistic()'>statistik</p>`
+		}).then(res => {
+			if(res.isConfirmed) {
+				goToStatistic();
+			}
+		})
+
 		gameFinish = true;
-		enterButton.innerHTML = 'Mulai Lagi';
+		enterButton.innerHTML = 'Mulai Lagi    <i class="fa fa-refresh"></i>';
 		guestWord.setAttribute('style',"display:none;");
 
 		answer.innerHTML = `<b>${secretWord.toUpperCase()}</b>:`;
@@ -166,7 +217,7 @@ enterButton.addEventListener('click', function(ev) {
 	if(numberGuest === 6) {
 		clearInterval(timer);
 		gameFinish = true;
-		enterButton.innerHTML = 'Mulai Lagi';
+		enterButton.innerHTML = 'Mulai Lagi    <i class="fa fa-refresh"></i>';
 		guestWord.setAttribute('style',"display:none;");
 		answer.innerHTML = `kata yang dimaksud adalah <b>${secretWord.toUpperCase()}</b>`;
 		answer.setAttribute('style','display:block;');
@@ -176,7 +227,14 @@ enterButton.addEventListener('click', function(ev) {
 
 		loseSound.play();
 		// window.alert('Sayang sekali kesempatanmu sudah habis');
-		swal({title:"Sayang sekali kesempatanmu sudah habis"});
+		// swal({title:"Sayang sekali kesempatanmu sudah habis"});
+		Swal.fire({
+			title:"Sayang sekali kesempatanmu sudah habis",
+			showConfirmButton : false,
+			timer: 1000,
+			allowEnterKey : true,
+		});
+
 
 		return;
 	};

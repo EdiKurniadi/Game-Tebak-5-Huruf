@@ -12,7 +12,6 @@ settingButton.addEventListener('click', () => {
 	// settingPage.style.height = '100vh';
 	// settingPage.style.opacity = '100%';
 	settingPage.style.visibility = 'visible';
-	// settingPage.style.display 
 })
 
 closeSettingButton.addEventListener('click', () => {
@@ -67,12 +66,13 @@ Chart.register(ChartDataLabels);
 Chart.defaults.color = 'black';
 
 const labels = [1,2,3,4,5,6];
+
 const data = {
   labels: labels,
   datasets: [{
     axis: 'y',
     label: 'Distribusi Jumlah Tebakan',
-    data: [ 1,5,12,16,13,12],
+    data: localStorage.distributedGuest ? JSON.parse(localStorage.distributedGuest) : [0,0,0,0,0,0],
     fill: false,
     // base : 15;
     barThickness : 20,
@@ -117,6 +117,8 @@ const config = {
         datalabels: {
             anchor: 'end',
             align: 'left',
+            clip: true,
+            // offset: 10,
             formatter: Math.round,
             color : 'white',
             font: {
@@ -131,4 +133,56 @@ const config = {
   	}
 };
 
-const myChart = new Chart(document.getElementById('myChart'),config);
+let myChart = new Chart(document.getElementById('myChart'),config);
+
+
+// if(!localStorage.nightMode) {
+//     localStorage.setItem('nightMode', 'inactive')
+// }
+
+// function firstCheckNightMode(ev) {
+//     if(localStorage.nightMode === 'active') {
+//         ev.target.classList.add('.dark-theme')
+//     }
+// }
+
+
+
+
+let mainBodyGame = document.querySelector('body');
+let checkBoxNightMode = document.querySelector('.night-mode');
+// let checkBoxHardMode = document.querySelector('.hard-mode');
+
+function toggleNightMode() {
+    if(checkBoxNightMode.checked) {
+        mainBodyGame.classList.add('dark-theme');
+        // localStorage.nightMode = 'active';
+    } else {
+        mainBodyGame.classList.remove('dark-theme');
+        // localStorage.nightMode = 'inactive';
+    }
+}
+
+
+
+let checkBoxTimer = document.querySelector('.timer');
+let useTimer = true;
+function toggleTimer() {
+    if(checkBoxTimer.checked) {
+        useTimer = true;
+    } else {
+        useTimer = false
+    }
+}
+
+checkBoxNightMode.addEventListener('change', () => {
+    toggleNightMode();
+})
+
+
+checkBoxTimer.addEventListener('change', () => {
+    toggleTimer();
+})
+
+toggleTimer();
+toggleNightMode();

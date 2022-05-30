@@ -60,12 +60,12 @@ function toggleHardMode() {
 	    if(checkBoxHardMode.checked) {
 	        words = wordsHard;
 	        randomNUmber = Math.floor(Math.random()*words.length);
-		secretWord = words[ randomNUmber ];
-		secretWordArray = secretWord.split('');
-		fetch(`https://tebak-kata-5-huruf.herokuapp.com/entri/${secretWord}`)
-  			.then(response => response.json())
-  			.then(data => meaningSecretWordHtml = data.data );   
-	    }		
+			secretWord = words[ randomNUmber ];
+			secretWordArray = secretWord.split('');
+			fetch(`https://tebak-kata-5-huruf.herokuapp.com/entri/${secretWord}`)
+			  .then(response => response.json())
+			  .then(data => meaningSecretWordHtml = data.data );
+	    }	
 	}
 }
 

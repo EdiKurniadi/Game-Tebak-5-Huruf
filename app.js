@@ -44,7 +44,7 @@ let responseny;
 let recurtionInGetCorrectWord = 0;
 const getCorrectWord = (secret_word) => {
 	// try {
-	fetch(`https://tebak-kata-5-huruf.herokuapp.com/entri/${secret_word}`)
+	fetch(`https://mushy-jeans-frog.cyclic.app/entri/${secret_word}`)
 		.then(response => response.json())
 		.then(data => {
 			if(data.data) {
@@ -94,7 +94,7 @@ function toggleHardMode() {
 	        randomNUmber = Math.floor(Math.random()*words.length);
 			secretWord = words[ randomNUmber ];
 			secretWordArray = secretWord.split('');
-			fetch(`https://tebak-kata-5-huruf.herokuapp.com/entri/${secretWord}`)
+			fetch(`https://mushy-jeans-frog.cyclic.app/entri/${secretWord}`)
 			  .then(response => response.json())
 			  .then(data => meaningSecretWordHtml = data.data );
 	    }	
